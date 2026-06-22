@@ -1,0 +1,44 @@
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        int n=nums.size();
+        vector<int>prefix(n,1);
+        vector<int>suffix(n,1);
+        for(int i=1;i<n;i++){
+            prefix[i]=prefix[i-1]*nums[i-1];
+        }
+        for(int i=n-2;i>=0;i--){
+            suffix[i]=suffix[i+1]*nums[i+1];
+        }
+        vector<int>ans(n,1);
+        for(int i=0;i<n;i++){
+            ans[i]=prefix[i]*suffix[i];
+        }
+        return ans;
+    }
+};
+/*
+#include <vector>
+using namespace std;
+
+vector<int> productExceptSelf(vector<int>& nums) {
+    int n = nums.size();
+    vector<int> ans(n, 1); // Starting-la ellame 1 nu vechikalam
+    
+    // Step 1: Left side products-a answer array-la fill panrom
+    int left_product = 1;
+    for (int i = 0; i < n; ++i) {
+        ans[i] = left_product;       // Current answer-a left product aakiradhu
+        left_product *= nums[i];     // Adutha step-kaga left_product-a update panradhu
+    }
+    
+    // Step 2: Right side products-a kandupudichu, direct-a answer kooda multiply panrom
+    int right_product = 1;
+    for (int i = n - 1; i >= 0; --i) {
+        ans[i] *= right_product;     // Pazhaiya left product kooda ipo right product-a multiply panrom
+        right_product *= nums[i];    // Adutha step-kaga right_product-a update panradhu
+    }
+    
+    return ans;
+}
+*/
