@@ -74,6 +74,18 @@ public class LinkedList{
 
         return head;
     }
+
+    static void printIthnode(Node head, int i){
+        Node temp = head;
+        int counter = 0;
+        while(temp != null){
+            if(counter==i){
+                System.out.println(temp.data);
+            }
+            counter++;
+            temp = temp.next; 
+        }
+    }
     public static void main(String[] args) {
         // Node n1 = new Node(10);
         // Node n2 = new Node(20);
@@ -102,6 +114,8 @@ public class LinkedList{
 
         Node updatedHead2 = new LinkedList().takeInputBetter();
         printLL(updatedHead2);
+
+        printIthnode(updatedHead,2);
 
     }
 }
