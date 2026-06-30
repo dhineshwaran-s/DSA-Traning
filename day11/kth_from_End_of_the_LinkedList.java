@@ -8,7 +8,7 @@
 } 
 //greek of greek sum  
 
-class Solution {
+class kthFromEnd {
      static int calculateLength(Node head){
         Node temp=head;
         int counter=0;
